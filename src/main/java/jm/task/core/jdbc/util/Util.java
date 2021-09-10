@@ -14,7 +14,7 @@ public class Util {
 
     public static void myDbConnection() throws ClassNotFoundException {
 
-        String url = "jdbc:mysql://localhost:3306/mydb";
+        String url = "jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC";
         String username = "root";
         String password = "190685";
         Class.forName("com.mysql.cj.jdbc.Driver");
