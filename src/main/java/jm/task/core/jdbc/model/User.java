@@ -1,12 +1,15 @@
 package jm.task.core.jdbc.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
+import static javax.persistence.GenerationType.IDENTITY;
 
+@Entity
 @Table
-public class User {
+public class User implements Serializable {
+
     @Id
+    @GeneratedValue (strategy = IDENTITY)
     private Long id;
 
     @Column
@@ -61,7 +64,7 @@ public class User {
     }
 
     @Override
-    public String toString(){                               // переопределили toString.
+    public String toString() {                               // переопределили toString.
         return id+" "+name+" "+lastName+" "+age;
     }
 }

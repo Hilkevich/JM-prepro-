@@ -15,7 +15,7 @@ public class Main {
          */
 
 
-        Util.myDbConnection();
+        Util.myDbConnectionHibernate();
         UserServiceImpl userServiceImpl = new UserServiceImpl();
 
         userServiceImpl.createUsersTable();
