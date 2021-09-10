@@ -11,7 +11,6 @@ import java.util.Properties;
 public class Util {
 
     // конфигурация для JDBC:
-
     public static void myDbConnection() throws ClassNotFoundException {
 
         String url = "jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC";
