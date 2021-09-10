@@ -29,7 +29,6 @@ public class Util {
 
 
     // конфигурация для Hibernate:
-
     private static SessionFactory concreteSessionFactory;
 
     static {
