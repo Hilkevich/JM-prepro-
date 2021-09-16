@@ -32,13 +32,14 @@ public class UserDaoHibernateImpl implements UserDao {
 
             Query query = session.createSQLQuery(sql).addEntity(User.class);
             query.executeUpdate();
-            System.out.println("Table \"User\" create successfully!");
-            transaction.commit();
-            session.close();
 
         } catch (Exception e) {
             session.close();
         }
+
+        System.out.println("Table \"User\" create successfully!");
+        transaction.commit();
+        session.close();
     }
 
 
@@ -116,7 +117,6 @@ public class UserDaoHibernateImpl implements UserDao {
             System.out.println(userList);
             transaction.commit();
             session.close();
-
             return userList;
 
         } catch (Exception e) {
