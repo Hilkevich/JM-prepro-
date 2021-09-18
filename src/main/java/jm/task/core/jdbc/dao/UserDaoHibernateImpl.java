@@ -5,13 +5,13 @@ import jm.task.core.jdbc.util.Util;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
 
 
     public UserDaoHibernateImpl() {
-
     }
 
 
@@ -32,14 +32,13 @@ public class UserDaoHibernateImpl implements UserDao {
 
             Query query = session.createSQLQuery(sql).addEntity(User.class);
             query.executeUpdate();
+            System.out.println("Table \"User\" create successfully!");
+            transaction.commit();
+            session.close();
 
         } catch (Exception e) {
             session.close();
         }
-
-        System.out.println("Table \"User\" create successfully!");
-        transaction.commit();
-        session.close();
     }
 
 
@@ -54,14 +53,13 @@ public class UserDaoHibernateImpl implements UserDao {
 
             Query query = session.createSQLQuery(sql).addEntity(User.class);
             query.executeUpdate();
+            System.out.println("Table \"User\" drop successfully!");
+            transaction.commit();
+            session.close();
 
         } catch (Exception e) {
             session.close();
         }
-
-        System.out.println("Table \"User\" drop successfully!");
-        transaction.commit();
-        session.close();
     }
 
 
@@ -74,14 +72,13 @@ public class UserDaoHibernateImpl implements UserDao {
         try {
             User user = new User(name, lastName, age);
             session.saveOrUpdate(user);
+            System.out.println("User с именем " + name + " добавлен в базу данных");
+            transaction.commit();
+            session.close();
 
         } catch (Exception e) {
             session.close();
         }
-
-        System.out.println("User с именем " + name + " добавлен в базу данных");
-        transaction.commit();
-        session.close();
     }
 
 
@@ -94,14 +91,13 @@ public class UserDaoHibernateImpl implements UserDao {
         try {
             User user = session.load(User.class, id);
             session.delete(user);
+            System.out.println("User под id " + id + " удален из базы данных");
+            transaction.commit();
+            session.close();
 
         } catch (Exception e) {
             session.close();
         }
-
-        System.out.println("User под id " + id + " удален из базы данных");
-        transaction.commit();
-        session.close();
     }
 
 
@@ -136,13 +132,12 @@ public class UserDaoHibernateImpl implements UserDao {
             String stringQuery = "DELETE FROM User";
             Query query = session.createQuery(stringQuery);
             query.executeUpdate();
+            System.out.println("Table \"User\" clean successfully!");
+            transaction.commit();
+            session.close();
 
         } catch (Exception e) {
             session.close();
         }
-
-        System.out.println("Table \"User\" clean successfully!");
-        transaction.commit();
-        session.close();
     }
 }

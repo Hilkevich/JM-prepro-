@@ -4,6 +4,7 @@ import jm.task.core.jdbc.model.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
@@ -17,6 +18,7 @@ public class Util {
         String username = "root";
         String password = "190685";
         Class.forName("com.mysql.cj.jdbc.Driver");
+
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             connection.createStatement();
             System.out.println("Connection to DB successfully!");
